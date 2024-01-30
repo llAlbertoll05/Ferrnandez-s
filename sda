@@ -1,0 +1,45 @@
+# Importar las librerías necesarias
+import graphviz as gv
+
+# Definir los conceptos
+conceptos = [
+    "Movimiento rectilíneo uniforme",
+    "Movimiento rectilíneo uniformemente acelerado",
+    "Caída libre",
+    "Tiro vertical",
+    "Trayectoria",
+    "Velocidad",
+    "Rapidez",
+    "Aceleración",
+    "Distancia",
+    "Desplazamiento",
+]
+
+# Definir las relaciones entre los conceptos
+relaciones = [
+    ("Movimiento rectilíneo uniforme", "Trayectoria", "recta"),
+    ("Movimiento rectilíneo uniformemente acelerado", "Trayectoria", "recta"),
+    ("Movimiento rectilíneo uniforme", "Velocidad", "constante"),
+    ("Movimiento rectilíneo uniformemente acelerado", "Velocidad", "variable"),
+    ("Movimiento rectilíneo uniformemente acelerado", "Aceleración", "constante"),
+    ("Caída libre", "Movimiento rectilíneo uniformemente acelerado", "aceleración de 9,8 m/s²"),
+    ("Tiro vertical", "Movimiento rectilíneo uniformemente acelerado", "aceleración de 9,8 m/s²"),
+    ("Velocidad", "Rapidez", "suma vectorial"),
+    ("Aceleración", "Velocidad", "derivada respecto al tiempo"),
+    ("Distancia", "positiva o nula"),
+    ("Desplazamiento", "positivo, negativo o nulo"),
+]
+
+# Crear el gráfico
+graph = gv.Digraph(name="Movimiento rectilíneo")
+
+# Agregar los conceptos
+for concepto in conceptos:
+    graph.node(concepto)
+
+# Agregar las relaciones
+for concepto1, concepto2, relacion in relaciones:
+    graph.edge(concepto1, concepto2, label=relacion)
+
+# Mostrar el gráfico
+print(graph.render())
